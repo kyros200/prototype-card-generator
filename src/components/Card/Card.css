@@ -1,0 +1,6 @@
+.card {
+    width: 8.8cm;
+    height: 6.35cm;
+    border: 8px solid black;
+    box-sizing: border-box;
+}
