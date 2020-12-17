@@ -1,12 +1,16 @@
 import { exportComponentAsPNG } from 'react-component-export-image';
 import React, { useRef } from 'react';
 import './Card.css';
+import components from '../../helper/layoutsComponents/index'
 
-const ComponentToPrint = React.forwardRef((props, ref) => (
-    <div ref={ref} className={"card"}>
-        {props.info.name}
-    </div>
-));
+
+const ComponentToPrint = React.forwardRef((props, ref) => { 
+    return (
+        <div ref={ref} className={"card"}>
+            {components[props.selectedGame][props.selectedLayout](props)}
+        </div>
+    )
+});
 
 const Card = (props) => {
     const componentRef = useRef();
