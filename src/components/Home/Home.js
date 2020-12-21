@@ -3,13 +3,13 @@ import Form from '../Form/Form';
 import Card from '../Card/Card';
 
 const Home = () => {
-    const [selectedGame, setSelectedGame] = useState("galm");
-    const [selectedLayout, setSelectedLayout] = useState("humano");
+    const [selectedGame, setSelectedGame] = useState("");
+    const [selectedLayout, setSelectedLayout] = useState("");
     const [info, setInfo] = useState({});
 
-    // useEffect(() => {
-    //     console.log(info);
-    // }, [info])
+    useEffect(() => {
+        setSelectedLayout("");
+    }, [selectedGame])
 
     return (
         <>
@@ -23,16 +23,13 @@ const Home = () => {
                 selectedLayout={selectedLayout}
                 setSelectedLayout={(v) => setSelectedLayout(v)}
             />
+            {selectedLayout &&
             <Card
                 info={info}
-                setInfo={(v) => setInfo(v)}
-
                 selectedGame={selectedGame}
-                setSelectedGame={(v) => setSelectedGame(v)}
-                
                 selectedLayout={selectedLayout}
-                setSelectedLayout={(v) => setSelectedLayout(v)}
             />
+            }
         </>
     );
 };
