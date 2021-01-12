@@ -23,7 +23,7 @@ const Form = (props) => {
             <select name="game" id="game" value={props.selectedGame} onChange={(e) => {props.setSelectedGame(e.target.value)}}>
                 <option value="">Select a Game...</option>
                 {localStorageHelper.getGames().map((g) => (
-                    <option value={g}>{g}</option>
+                    <option key={g} value={g}>{g}</option>
                 ))}
             </select>
 
@@ -32,7 +32,7 @@ const Form = (props) => {
             >
                 <option value="" disabled>Select a Layout...</option>
                 {localStorageHelper.getLayouts(props.selectedGame).map((l) => (
-                    <option value={l}>{l}</option>
+                    <option key={l} value={l}>{l}</option>
                 ))}
             </select>
             }

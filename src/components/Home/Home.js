@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import Card from '../Card/Card';
-import Layouts from '../../helper/layouts'
+import DefaultLayout from '../../helper/defaultLayouts'
 import localStorageHelper from '../../helper/localStorageHelper';
 import ModalLayout from '../ModalLayout/ModalLayout';
 
@@ -30,11 +30,15 @@ const Home = () => {
 
     useEffect(() => {
         if(!layouts){
-            alert("Local save not found, creating a new one!")
-            localStorage.setItem("card-maker-najjar", JSON.stringify(Layouts))
-            setLayouts(Layouts)
+            alert("Local save not found, creating a new default one!")
+            localStorage.setItem("card-maker-najjar", JSON.stringify(DefaultLayout))
+            setLayouts(DefaultLayout)
         }
     }, [layouts])
+
+    // useEffect(() => {
+    //     console.log(layouts)
+    // }, [])
 
     return (
         <>
