@@ -1,5 +1,5 @@
 /* example:
-    game : {
+    gameX : {
         layoutX: {
             fields: [
                 {label: "", type: "", style: {}},
@@ -7,6 +7,7 @@
             ],
             component: (props) => Component(props)
         },
+        layoutY: { ... },
         ...
     }
 */

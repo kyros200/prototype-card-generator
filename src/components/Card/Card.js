@@ -1,6 +1,6 @@
 import { exportComponentAsPNG } from 'react-component-export-image';
 import React, { useRef } from 'react';
-import layoutHelper from '../../helper/layoutHelper'
+import layoutHelper from '../../helper/layoutHelper';
 
 const ComponentToPrint = React.forwardRef((props, ref) => { 
     return (
