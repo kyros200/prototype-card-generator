@@ -1,15 +1,19 @@
+const getField = (props, i) => {
+    return props.layouts[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i});
+}
+
 const getType = (props, i) => {
-    return props.layouts[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i}).length > 0 ? props.layouts[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i})[0].type : "txt";
+    return getField(props, i).length > 0 ? getField(props, i)[0].type : "txt";
 }
 
 const getStyle = (props, i) => {
-    return props.layouts[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i}).length > 0 ? props.layouts[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i})[0].style : {};
+    return getField(props, i).length > 0 ? getField(props, i)[0].styleField : {};
 }
 
 const getFields = (props) => {
     return props.selectedGame && props.selectedLayout ? props.layouts[props.selectedGame][props.selectedLayout].map((l) => l.label) : [];
 }
 
-const layoutHelper = {getType, getStyle, getFields};
+const layoutHelper = {getField, getType, getStyle, getFields};
 
 export default layoutHelper;
