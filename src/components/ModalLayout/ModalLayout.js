@@ -5,45 +5,45 @@ import defaultFieldCSS from '../../helper/defaultFieldCSS';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
-        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
+        let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
 
-        let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
 
-        newLayouts[props.selectedGame][props.selectedLayout][index]['styleField'][styleField] = e.target.value;
+        newAllInfo[props.selectedGame][props.selectedLayout][index]['styleField'][styleField] = e.target.value;
 
-        props.setAllInfo(newLayouts);
+        props.setAllInfo(newAllInfo);
     }
 
     const handleChangeBase = (e, field, where) => {
         updateCardForm(e, field);
 
-        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
-        let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-        newLayouts[props.selectedGame][props.selectedLayout][index][where] = e.target.value;
-        props.setAllInfo(newLayouts);
+        let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
+        newAllInfo[props.selectedGame][props.selectedLayout][index][where] = e.target.value;
+        props.setAllInfo(newAllInfo);
     }
 
     const addField = () => {
-        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
+        let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
 
-        const index = newLayouts[props.selectedGame][props.selectedLayout].length;
+        const index = newAllInfo[props.selectedGame][props.selectedLayout].length;
 
-        newLayouts[props.selectedGame][props.selectedLayout].push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
+        newAllInfo[props.selectedGame][props.selectedLayout].push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
 
         props.setCardForm({...props.cardForm, [`NewField${index}`]: ""});
-        props.setAllInfo(newLayouts);
+        props.setAllInfo(newAllInfo);
     }
 
     const removeField = (field) => {
-        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
+        let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
 
-        let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
 
-        newLayouts[props.selectedGame][props.selectedLayout].splice(index, 1);
+        newAllInfo[props.selectedGame][props.selectedLayout].splice(index, 1);
 
         updateCardForm("", field, true);
 
-        props.setAllInfo(newLayouts);
+        props.setAllInfo(newAllInfo);
     }
 
     function updateCardForm(e, field, isDelete) {
@@ -60,6 +60,7 @@ const ModalLayout = (props) => {
             ariaHideApp={false}
         >
             <button onClick={() => props.close()}>Close</button>
+            <h2>Card Layout</h2>
             <div style={{display: 'flex', margin: "8px 0px"}}>
                 <div style={{width: "3%"}} />
                 <div style={{width: "8%"}}>

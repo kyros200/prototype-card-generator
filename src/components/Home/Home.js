@@ -4,6 +4,9 @@ import Card from '../Card/Card';
 import DefaultAllInfo from '../../helper/defaultAllInfo'
 import localStorageHelper from '../../helper/localStorageHelper';
 import ModalLayout from '../ModalLayout/ModalLayout';
+import ModalLayoutEdit from '../ModalLayoutEdit/ModalLayoutEdit';
+import ModalGameEdit from '../ModalGameEdit/ModalGameEdit';
+import layoutHelper from '../../helper/layoutHelper';
 
 const Home = () => {
     const [allInfo, setAllInfo] = useState(localStorage.getItem("card-maker-najjar") ? JSON.parse(localStorage.getItem("card-maker-najjar")) : "");
@@ -12,6 +15,8 @@ const Home = () => {
     const [cardForm, setCardForm] = useState({});
 
     const [modalLayout, setModalLayout] = useState(false);
+    const [modalLayoutEdit, setModalLayoutEdit] = useState(false);
+    const [modalGameEdit, setModalGameEdit] = useState(false);
 
     useEffect(() => {
         setSelectedLayout("");
@@ -20,7 +25,7 @@ const Home = () => {
 
     useEffect(() => {
         if(selectedLayout) {
-            setCardForm(localStorageHelper.formatInfo(selectedGame, selectedLayout));
+            setCardForm(layoutHelper.formatInfo(allInfo, selectedGame, selectedLayout));
         }
     }, [selectedLayout])
 
@@ -56,6 +61,8 @@ const Home = () => {
                 setSelectedLayout={(v) => setSelectedLayout(v)}
 
                 setModalLayout = {(b) => setModalLayout(b)}
+                setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                setModalGameEdit = {(b) => setModalGameEdit(b)}
             />
             {selectedLayout &&
             <Card
@@ -78,6 +85,30 @@ const Home = () => {
                 isOpen={modalLayout}
                 close = {() => setModalLayout(false)}
                 save = {() => localStorageHelper.saveAllInfo(allInfo)}
+            />
+            <ModalLayoutEdit 
+                isOpen={modalLayoutEdit}
+                close = {() => setModalLayoutEdit(false)}
+
+                selectedLayout={selectedLayout}
+                setSelectedLayout={(v) => setSelectedLayout(v)}
+                selectedGame={selectedGame}
+
+                allInfo={allInfo}
+                setAllInfo={(v) => setAllInfo(v)}
+                save = {(a) => localStorageHelper.saveAllInfo(a)}
+            />
+            <ModalGameEdit 
+                isOpen={modalGameEdit}
+                close = {() => setModalGameEdit(false)}
+
+                selectedGame={selectedGame}
+                setSelectedGame={(v) => setSelectedGame(v)}
+                setSelectedLayout={(v) => setSelectedLayout(v)}
+
+                allInfo={allInfo}
+                setAllInfo={(v) => setAllInfo(v)}
+                save = {(a) => localStorageHelper.saveAllInfo(a)}
             />
             
         </>
