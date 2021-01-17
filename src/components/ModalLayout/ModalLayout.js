@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import layoutHelper from '../../helper/layoutHelper';
 import defaultFieldCSS from '../../helper/defaultFieldCSS';
+import localStorageHelper from '../../helper/localStorageHelper';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
@@ -59,7 +60,7 @@ const ModalLayout = (props) => {
             isOpen={props.isOpen}
             ariaHideApp={false}
         >
-            <button onClick={() => props.close()}>Close</button>
+            <button onClick={() => {props.close(); props.setAllInfo(localStorageHelper.getJSON())}}>Close</button>
             <h2>Card Layout</h2>
             <div style={{display: 'flex', margin: "8px 0px"}}>
                 <div style={{width: "3%"}} />
