@@ -18,8 +18,8 @@ const formatInfo = (game, layout) => {
     return getJSON()[game][layout].map((l) => l.label).reduce((t, c) => {t[c] = ""; return t}, {})
 }
 
-const saveLayout = () => {
-    console.log("salvando Layout agora");
+const saveLayout = (newLayout) => {
+    localStorage.setItem("card-maker-najjar", JSON.stringify(newLayout))
 }
 
 const localStorageHelper = {getString, getJSON, getGames, getLayouts, formatInfo, saveLayout};

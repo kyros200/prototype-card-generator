@@ -9,24 +9,24 @@ const Home = () => {
     const [layouts, setLayouts] = useState(localStorage.getItem("card-maker-najjar") ? JSON.parse(localStorage.getItem("card-maker-najjar")) : "");
     const [selectedGame, setSelectedGame] = useState("");
     const [selectedLayout, setSelectedLayout] = useState("");
-    const [info, setInfo] = useState({});
+    const [cardForm, setCardForm] = useState({});
 
     const [modalLayout, setModalLayout] = useState(false);
 
     useEffect(() => {
         setSelectedLayout("");
-        setInfo({});
+        setCardForm({});
     }, [selectedGame])
 
     useEffect(() => {
         if(selectedLayout) {
-            setInfo(localStorageHelper.formatInfo(selectedGame, selectedLayout));
+            setCardForm(localStorageHelper.formatInfo(selectedGame, selectedLayout));
         }
     }, [selectedLayout])
 
         // useEffect(() => {
-        //     console.log(info);
-        // }, [info])
+        //     console.log(cardForm);
+        // }, [cardForm])
 
     useEffect(() => {
         if(!layouts){
@@ -46,8 +46,8 @@ const Home = () => {
                 layouts={layouts}
                 setLayouts={(v) => setLayouts(v)}
 
-                info={info}
-                setInfo={(v) => setInfo(v)}
+                cardForm={cardForm}
+                setCardForm={(v) => setCardForm(v)}
 
                 selectedGame={selectedGame}
                 setSelectedGame={(v) => setSelectedGame(v)}
@@ -60,20 +60,24 @@ const Home = () => {
             {selectedLayout &&
             <Card
                 layouts={layouts}
-                info={info}
+                cardForm={cardForm}
                 selectedGame={selectedGame}
                 selectedLayout={selectedLayout}
             />
             }
             <ModalLayout
                 layouts={layouts}
+                setLayouts={(v) => setLayouts(v)}
+
                 selectedGame={selectedGame}
                 selectedLayout={selectedLayout}
-                setLayouts={(v) => setLayouts(v)}
+
+                cardForm={cardForm}
+                setCardForm={(i) => setCardForm(i)}
 
                 isOpen={modalLayout}
                 close = {() => setModalLayout(false)}
-                save = {() => localStorageHelper.saveLayout()}
+                save = {() => localStorageHelper.saveLayout(layouts)}
             />
             
         </>

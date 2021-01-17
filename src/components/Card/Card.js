@@ -15,19 +15,19 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
             }}
         >
             {/* {components[props.selectedGame][props.selectedLayout](props)} */}
-            {Object.keys(props.info).map(f => 
+            {Object.keys(props.cardForm).map(f => 
                 {
                     switch(layoutHelper.getType(props, f)) {
                         case "txt":
                             return (
                                 <div style={layoutHelper.getStyle(props, f)}>
-                                    {props.info[f]}
+                                    {props.cardForm[f]}
                                 </div>
                             )
                         case "img":
                             return (
                                 <div style={layoutHelper.getStyle(props, f)}>
-                                    <img alt={f} src={props.info[f]} width="100%" height="100%" />
+                                    <img alt="" title={f} src={props.cardForm[f]} width="100%" height="100%" />
                                 </div>
                             )
                         default:

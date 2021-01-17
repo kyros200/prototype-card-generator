@@ -11,11 +11,11 @@ mudar o input de acordo com o type (txt ser campo livre, num ser apenas numero e
 
 const Form = (props) => {
     const handleChange = (value, field) => {
-        let newInfo = {...props.info};
+        let newCardForm = {...props.cardForm};
 
-        newInfo[field] = value;
+        newCardForm[field] = value;
 
-        props.setInfo(newInfo);
+        props.setCardForm(newCardForm);
     }
 
     return (
@@ -51,7 +51,7 @@ const Form = (props) => {
                 return(
                     <div>
                         <label>{`${i.label}`}</label>
-                        <input onChange={(e) => handleChange(e.target.value, i.label)} value={props.info[i.label]} />
+                        <input onChange={(e) => handleChange(e.target.value, i.label)} value={props.cardForm[i.label]} />
                     </div>
                 )
             })
