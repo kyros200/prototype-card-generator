@@ -18,10 +18,10 @@ const formatInfo = (game, layout) => {
     return getJSON()[game][layout].map((l) => l.label).reduce((t, c) => {t[c] = ""; return t}, {})
 }
 
-const saveLayout = (newLayout) => {
+const saveAllInfo = (newLayout) => {
     localStorage.setItem("card-maker-najjar", JSON.stringify(newLayout))
 }
 
-const localStorageHelper = {getString, getJSON, getGames, getLayouts, formatInfo, saveLayout};
+const localStorageHelper = {getString, getJSON, getGames, getLayouts, formatInfo, saveAllInfo};
 
 export default localStorageHelper;

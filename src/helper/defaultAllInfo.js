@@ -14,7 +14,7 @@
 
 import defaultCSS from "./defaultFieldCSS";
 
-const layouts = {
+const allInfo = {
     galm: {
         humano: [
             {label:'name', type: "txt", styleField: {...defaultCSS, border: "2px solid black", width: "5cm", height: "0.7cm", top:"0.1cm", left:""}}, 
@@ -48,4 +48,4 @@ const layouts = {
     },
 };
 
-export default layouts;
+export default allInfo;

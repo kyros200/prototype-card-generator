@@ -20,19 +20,19 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                     switch(layoutHelper.getType(props, f)) {
                         case "txt":
                             return (
-                                <div style={layoutHelper.getStyle(props, f)}>
+                                <div key={`field-${f}`} style={layoutHelper.getStyle(props, f)}>
                                     {props.cardForm[f]}
                                 </div>
                             )
                         case "img":
                             return (
-                                <div style={layoutHelper.getStyle(props, f)}>
+                                <div key={`field-${f}`} style={layoutHelper.getStyle(props, f)}>
                                     <img alt="" title={f} src={props.cardForm[f]} width="100%" height="100%" />
                                 </div>
                             )
                         default:
                             return (
-                                <div style={layoutHelper.getStyle(props, f)}>
+                                <div key={`field-${f}`} style={layoutHelper.getStyle(props, f)}>
                                     no type declared
                                 </div>
                             )

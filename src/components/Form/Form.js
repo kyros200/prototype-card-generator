@@ -20,7 +20,7 @@ const Form = (props) => {
 
     return (
         <>
-            <select name="game" id="game" value={props.selectedGame} onChange={(e) => {props.setSelectedGame(e.target.value)}}>
+            <select key="game" name="game" id="game" value={props.selectedGame} onChange={(e) => {props.setSelectedGame(e.target.value)}}>
                 <option value="">Select a Game...</option>
                 {localStorageHelper.getGames().map((g) => (
                     <option key={g} value={g}>{g}</option>
@@ -28,7 +28,7 @@ const Form = (props) => {
             </select>
 
             {props.selectedGame &&
-            <select name="layout" id="layout" value={props.selectedLayout} onChange={(e) => {props.setSelectedLayout(e.target.value)}}
+            <select key="layout" name="layout" id="layout" value={props.selectedLayout} onChange={(e) => {props.setSelectedLayout(e.target.value)}}
             >
                 <option value="" disabled>Select a Layout...</option>
                 {localStorageHelper.getLayouts(props.selectedGame).map((l) => (
@@ -38,18 +38,18 @@ const Form = (props) => {
             }
 
             {props.selectedLayout &&
-            <button onClick={() => props.setModalLayout(true)}>
+            <button key="edit" onClick={() => props.setModalLayout(true)}>
                 Edit
             </button>
             }
 
             {
-            props.layouts[props.selectedGame] &&
-            (props.layouts[props.selectedGame][props.selectedLayout] 
+            props.allInfo[props.selectedGame] &&
+            (props.allInfo[props.selectedGame][props.selectedLayout] 
             ? 
-            props.layouts[props.selectedGame][props.selectedLayout].map((i) => {
+            props.allInfo[props.selectedGame][props.selectedLayout].map((i) => {
                 return(
-                    <div>
+                    <div key={`field-${i.label}`}>
                         <label>{`${i.label}`}</label>
                         <input onChange={(e) => handleChange(e.target.value, i.label)} value={props.cardForm[i.label]} />
                     </div>

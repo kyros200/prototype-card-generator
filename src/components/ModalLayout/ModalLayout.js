@@ -5,37 +5,37 @@ import defaultFieldCSS from '../../helper/defaultFieldCSS';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
-        let newLayouts = JSON.parse(JSON.stringify(props.layouts));
+        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
 
         let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
 
         newLayouts[props.selectedGame][props.selectedLayout][index]['styleField'][styleField] = e.target.value;
 
-        props.setLayouts(newLayouts);
+        props.setAllInfo(newLayouts);
     }
 
     const handleChangeLabel = (e, field) => {
         updateCardForm(e, field);
 
-        let newLayouts = JSON.parse(JSON.stringify(props.layouts));
+        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
         let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
         newLayouts[props.selectedGame][props.selectedLayout][index].label = e.target.value;
-        props.setLayouts(newLayouts);
+        props.setAllInfo(newLayouts);
     }
 
     const addField = () => {
-        let newLayouts = JSON.parse(JSON.stringify(props.layouts));
+        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
 
         const index = newLayouts[props.selectedGame][props.selectedLayout].length;
 
         newLayouts[props.selectedGame][props.selectedLayout].push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
 
         props.setCardForm({...props.cardForm, [`NewField${index}`]: ""});
-        props.setLayouts(newLayouts);
+        props.setAllInfo(newLayouts);
     }
 
     const removeField = (field) => {
-        let newLayouts = JSON.parse(JSON.stringify(props.layouts));
+        let newLayouts = JSON.parse(JSON.stringify(props.allInfo));
 
         let index = newLayouts[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
 
@@ -43,7 +43,7 @@ const ModalLayout = (props) => {
 
         updateCardForm("", field, true);
 
-        props.setLayouts(newLayouts);
+        props.setAllInfo(newLayouts);
     }
 
     function updateCardForm(e, field, isDelete) {

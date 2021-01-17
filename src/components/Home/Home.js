@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Form from '../Form/Form';
 import Card from '../Card/Card';
-import DefaultLayout from '../../helper/defaultLayouts'
+import DefaultAllInfo from '../../helper/defaultAllInfo'
 import localStorageHelper from '../../helper/localStorageHelper';
 import ModalLayout from '../ModalLayout/ModalLayout';
 
 const Home = () => {
-    const [layouts, setLayouts] = useState(localStorage.getItem("card-maker-najjar") ? JSON.parse(localStorage.getItem("card-maker-najjar")) : "");
+    const [allInfo, setAllInfo] = useState(localStorage.getItem("card-maker-najjar") ? JSON.parse(localStorage.getItem("card-maker-najjar")) : "");
     const [selectedGame, setSelectedGame] = useState("");
     const [selectedLayout, setSelectedLayout] = useState("");
     const [cardForm, setCardForm] = useState({});
@@ -29,22 +29,22 @@ const Home = () => {
         // }, [cardForm])
 
     useEffect(() => {
-        if(!layouts){
+        if(!allInfo){
             alert("Local save not found, creating a new default one!")
-            localStorage.setItem("card-maker-najjar", JSON.stringify(DefaultLayout))
-            setLayouts(DefaultLayout)
+            localStorage.setItem("card-maker-najjar", JSON.stringify(DefaultAllInfo))
+            setAllInfo(DefaultAllInfo)
         }
-    }, [layouts])
+    }, [allInfo])
 
     // useEffect(() => {
-    //     console.log(layouts)
+    //     console.log(allInfo)
     // }, [])
 
     return (
         <>
             <Form 
-                layouts={layouts}
-                setLayouts={(v) => setLayouts(v)}
+                allInfo={allInfo}
+                setAllInfo={(v) => setAllInfo(v)}
 
                 cardForm={cardForm}
                 setCardForm={(v) => setCardForm(v)}
@@ -59,15 +59,15 @@ const Home = () => {
             />
             {selectedLayout &&
             <Card
-                layouts={layouts}
+                allInfo={allInfo}
                 cardForm={cardForm}
                 selectedGame={selectedGame}
                 selectedLayout={selectedLayout}
             />
             }
             <ModalLayout
-                layouts={layouts}
-                setLayouts={(v) => setLayouts(v)}
+                allInfo={allInfo}
+                setAllInfo={(v) => setAllInfo(v)}
 
                 selectedGame={selectedGame}
                 selectedLayout={selectedLayout}
@@ -77,7 +77,7 @@ const Home = () => {
 
                 isOpen={modalLayout}
                 close = {() => setModalLayout(false)}
-                save = {() => localStorageHelper.saveLayout(layouts)}
+                save = {() => localStorageHelper.saveAllInfo(allInfo)}
             />
             
         </>
