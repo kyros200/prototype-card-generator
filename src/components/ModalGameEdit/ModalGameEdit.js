@@ -18,6 +18,7 @@ const ModalGameEdit = (props) => {
         props.setSelectedGame(name);
         props.setAllInfo(newAllInfo);
         props.save(newAllInfo);
+        props.close();
     }
 
     const newGame = () => {

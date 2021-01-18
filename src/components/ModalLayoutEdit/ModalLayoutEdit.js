@@ -17,6 +17,7 @@ const ModalLayoutEdit = (props) => {
         props.setSelectedLayout(name);
         props.setAllInfo(newAllInfo);
         props.save(newAllInfo);
+        props.close();
     }
 
     const newLayout = () => {
