@@ -14,7 +14,6 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                 position: "relative",
             }}
         >
-            {/* {components[props.selectedGame][props.selectedLayout](props)} */}
             {Object.keys(props.cardForm).map(f => 
                 {
                     switch(layoutHelper.getType(props, f)) {

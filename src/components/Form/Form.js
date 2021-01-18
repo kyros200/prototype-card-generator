@@ -1,14 +1,5 @@
 import React from 'react';
 import layoutHelper from '../../helper/layoutHelper';
-import localStorageHelper from '../../helper/localStorageHelper';
-
-/*
-TODO
-
-Colocar mais campos de layout pra tudo (ex: cor de fundo)
-estilizar e ficar minimamente bonito
-mudar o input de acordo com o type (txt ser campo livre, num ser apenas numero e virgula, img ter uma validacao de link)
-*/
 
 const Form = (props) => {
     const handleChange = (value, field) => {

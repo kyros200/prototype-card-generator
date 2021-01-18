@@ -7,11 +7,8 @@ import localStorageHelper from '../../helper/localStorageHelper';
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-
         let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-
         newAllInfo[props.selectedGame][props.selectedLayout][index]['styleField'][styleField] = e.target.value;
-
         props.setAllInfo(newAllInfo);
     }
 
@@ -26,24 +23,17 @@ const ModalLayout = (props) => {
 
     const addField = () => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-
         const index = newAllInfo[props.selectedGame][props.selectedLayout].length;
-
         newAllInfo[props.selectedGame][props.selectedLayout].push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
-
         props.setCardForm({...props.cardForm, [`NewField${index}`]: ""});
         props.setAllInfo(newAllInfo);
     }
 
     const removeField = (field) => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-
         let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-
         newAllInfo[props.selectedGame][props.selectedLayout].splice(index, 1);
-
         updateCardForm("", field, true);
-
         props.setAllInfo(newAllInfo);
     }
 
@@ -101,7 +91,6 @@ const ModalLayout = (props) => {
             {props.selectedGame && props.selectedLayout &&
             layoutHelper.getFields(props).map((f) =>
                 {
-                // console.log(layoutHelper.getField(props, f)[0])
                 return (
                 <div style={{display: 'flex', margin: "8px 0px"}}>
                     <div style={{cursor: "pointer", width: "3%"}} onClick={() => removeField(f)}>

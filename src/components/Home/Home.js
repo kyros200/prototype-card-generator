@@ -29,9 +29,9 @@ const Home = () => {
         }
     }, [selectedLayout])
 
-        // useEffect(() => {
-        //     console.log(cardForm);
-        // }, [cardForm])
+    // useEffect(() => {
+    //     console.log(cardForm);
+    // }, [cardForm])
 
     useEffect(() => {
         if(!allInfo){
@@ -49,7 +49,7 @@ const Home = () => {
         <>
             <Form 
                 allInfo={allInfo}
-                setAllInfo={(v) => setAllInfo(v)}
+                // setAllInfo={(v) => setAllInfo(v)}
 
                 cardForm={cardForm}
                 setCardForm={(v) => setCardForm(v)}
