@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import LayoutSelector from '../LayoutSelector/LayoutSelector';
 import Form from '../Form/Form';
 import Card from '../Card/Card';
 import DefaultAllInfo from '../../helper/defaultAllInfo'
@@ -47,6 +48,18 @@ const Home = () => {
 
     return (
         <>
+            <LayoutSelector
+                allInfo={allInfo}
+                
+                selectedGame={selectedGame}
+                setSelectedGame={(v) => setSelectedGame(v)}
+                
+                selectedLayout={selectedLayout}
+                setSelectedLayout={(v) => setSelectedLayout(v)}
+
+                setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                setModalGameEdit = {(b) => setModalGameEdit(b)}
+            />
             <Form 
                 allInfo={allInfo}
                 // setAllInfo={(v) => setAllInfo(v)}
