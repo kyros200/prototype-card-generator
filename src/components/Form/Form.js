@@ -21,7 +21,7 @@ const Form = (props) => {
             props.allInfo[props.selectedGame] &&
             (props.allInfo[props.selectedGame][props.selectedLayout] 
             ? 
-            props.allInfo[props.selectedGame][props.selectedLayout].map((i) => {
+            props.allInfo[props.selectedGame][props.selectedLayout].fields.map((i) => {
                 return(
                     <div key={`field-${i.label}`}>
                         <label>{`${i.label}`}</label>

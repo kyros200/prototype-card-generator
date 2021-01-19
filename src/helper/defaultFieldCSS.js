@@ -1,4 +1,4 @@
-const defaultCSS = {
+const defaultFieldCSS = {
     position: "absolute",
     
     boxSizing: "border-box",
@@ -11,4 +11,4 @@ const defaultCSS = {
     overflow: "hidden",
 }
 
-export default defaultCSS;
+export default defaultFieldCSS;

@@ -1,5 +1,5 @@
 const getField = (props, i) => {
-    return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].filter((x) => {return x.label === i}) : [];
+    return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].fields.filter((x) => {return x.label === i}) : [];
 }
 
 const getType = (props, i) => {
@@ -15,7 +15,7 @@ const getLayouts = (props, game) => {
 }
 
 const formatInfo = (allInfo, game, layout) => {
-    return allInfo[game][layout].map((l) => l.label).reduce((t, c) => {t[c] = ""; return t}, {})
+    return allInfo[game][layout].fields.map((l) => l.label).reduce((t, c) => {t[c] = ""; return t}, {})
 }
 
 const getStyle = (props, i) => {
@@ -23,7 +23,7 @@ const getStyle = (props, i) => {
 }
 
 const getFields = (props) => {
-    return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].map((l) => l.label) : [];
+    return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].fields.map((l) => l.label) : [];
 }
 
 const layoutHelper = {getField, getType, getGames, getLayouts, formatInfo, getStyle, getFields};

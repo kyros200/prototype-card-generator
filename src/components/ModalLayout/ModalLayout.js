@@ -7,8 +7,8 @@ import localStorageHelper from '../../helper/localStorageHelper';
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-        newAllInfo[props.selectedGame][props.selectedLayout][index]['styleField'][styleField] = e.target.value;
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].fields.map((f) => f.label).indexOf(field);
+        newAllInfo[props.selectedGame][props.selectedLayout].fields[index]['styleField'][styleField] = e.target.value;
         props.setAllInfo(newAllInfo);
     }
 
@@ -16,23 +16,23 @@ const ModalLayout = (props) => {
         updateCardForm(e, field);
 
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-        newAllInfo[props.selectedGame][props.selectedLayout][index][where] = e.target.value;
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].fields.map((f) => f.label).indexOf(field);
+        newAllInfo[props.selectedGame][props.selectedLayout].fields[index][where] = e.target.value;
         props.setAllInfo(newAllInfo);
     }
 
     const addField = () => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-        const index = newAllInfo[props.selectedGame][props.selectedLayout].length;
-        newAllInfo[props.selectedGame][props.selectedLayout].push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
+        const index = newAllInfo[props.selectedGame][props.selectedLayout].fields.length;
+        newAllInfo[props.selectedGame][props.selectedLayout].fields.push({label:`NewField${index}`, type: "txt", styleField: defaultFieldCSS})
         props.setCardForm({...props.cardForm, [`NewField${index}`]: ""});
         props.setAllInfo(newAllInfo);
     }
 
     const removeField = (field) => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
-        let index = newAllInfo[props.selectedGame][props.selectedLayout].map((f) => f.label).indexOf(field);
-        newAllInfo[props.selectedGame][props.selectedLayout].splice(index, 1);
+        let index = newAllInfo[props.selectedGame][props.selectedLayout].fields.map((f) => f.label).indexOf(field);
+        newAllInfo[props.selectedGame][props.selectedLayout].fields.splice(index, 1);
         updateCardForm("", field, true);
         props.setAllInfo(newAllInfo);
     }
@@ -125,14 +125,14 @@ const ModalLayout = (props) => {
                         <input disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
                     </div>
                     <select disabled={layoutHelper.getType(props, f) !== "txt"} style={{width: "8%"}} key="justifyContent" name="justifyContent" id="justifyContent" value={layoutHelper.getField(props, f)[0].styleField.justifyContent} onChange={(e) => handleChangeStyle(e, "justifyContent", f)}>
-                        <option value="start">Left</option>
+                        <option value="flex-start">Left</option>
                         <option value="center">Center</option>
-                        <option value="end">Right</option>
+                        <option value="flex-end">Right</option>
                     </select>
                     <select disabled={layoutHelper.getType(props, f) !== "txt"} style={{width: "8%"}} key="alignItems" name="alignItems" id="alignItems" value={layoutHelper.getField(props, f)[0].styleField.alignItems} onChange={(e) => handleChangeStyle(e, "alignItems", f)}>
                         <option value="flex-start">Top</option>
                         <option value="center">Center</option>
-                        <option value="end">Bottom</option>
+                        <option value="flex-end">Bottom</option>
                     </select>
                 </div>
                 )}

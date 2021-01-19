@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import defaultCardCSS from '../../helper/defaultCardCSS';
 
 const ModalLayoutEdit = (props) => {
     const [name, setName] = useState("");
@@ -23,7 +24,10 @@ const ModalLayoutEdit = (props) => {
     const newLayout = () => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
         const index = Object.keys(newAllInfo[props.selectedGame]).length + 1;
-        newAllInfo[props.selectedGame][`NewLayout${index}`] = [];
+        newAllInfo[props.selectedGame][`NewLayout${index}`] = {
+            fields: [],
+            card: defaultCardCSS
+        };
         props.setSelectedLayout(`NewLayout${index}`);
         props.setAllInfo(newAllInfo);
         props.save(newAllInfo);
