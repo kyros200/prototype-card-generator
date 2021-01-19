@@ -53,16 +53,16 @@ const ModalLayoutEdit = (props) => {
             <>
                 <input onChange={(e) => setName(e.target.value)} value={name} />
                 {props.selectedLayout !== name && 
-                <button onClick={() => saveNewName()}>Save Name</button>
+                <div class="button confirm" onClick={() => saveNewName()}>Save Name</div>
                 }
             </>
             }
-            <button onClick={() => newLayout()}>New Layout</button>
+            <div class="button new" onClick={() => newLayout()}>New Layout</div>
             {props.selectedLayout &&
                 (!confirmButton  ?
-                <button disabled={name !== props.selectedLayout} onClick={() => setConfirmButton(true)}>Delete Selected Layout</button>
+                <div class="button reject" disabled={name !== props.selectedLayout} onClick={() => setConfirmButton(true)}>Delete Selected Layout</div>
                 :
-                <button disabled={name !== props.selectedLayout} onClick={() => deleteLayout()}>Are you sure? Data will be deleted forever! (Click again to confirm)</button>
+                <div class="button reject" disabled={name !== props.selectedLayout} onClick={() => deleteLayout()}>Are you sure? Data will be deleted forever! (Click again to confirm)</div>
                 )
             }
         </Modal>

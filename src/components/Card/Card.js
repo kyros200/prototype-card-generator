@@ -42,9 +42,9 @@ const Card = (props) => {
     return (
         <>
             <ComponentToPrint {...props} ref={componentRef} />
-            <button onClick={() => exportComponentAsPNG(componentRef)}>
-                Export As PNG
-            </button>
+            <div class="button config" onClick={() => exportComponentAsPNG(componentRef)}>
+                Export as PNG
+            </div>
         </>
     );
 };

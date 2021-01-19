@@ -12,9 +12,9 @@ const Form = (props) => {
     return (
         <>
             {props.selectedLayout &&
-            <button key="edit" onClick={() => props.setModalLayout(true)}>
+            <div class="button config" key="edit" onClick={() => props.setModalLayout(true)}>
                 Edit this card layout
-            </button>
+            </div>
             }
 
             {

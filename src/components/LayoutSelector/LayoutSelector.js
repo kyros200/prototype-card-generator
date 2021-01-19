@@ -7,9 +7,9 @@ const LayoutSelector = (props) => {
     }, [])
     return (
         <>
-            <button key="gameModal" onClick={() => props.setModalGameEdit(true)}>
+            <div class="button config" key="gameModal" onClick={() => props.setModalGameEdit(true)}>
                 Edit Games
-            </button>
+            </div>
             <select key="game" name="game" id="game" value={props.selectedGame} onChange={(e) => {props.setSelectedGame(e.target.value)}}>
                 <option value="">Select a Game...</option>
                 {layoutHelper.getGames(props).map((g) => (
@@ -19,9 +19,9 @@ const LayoutSelector = (props) => {
 
             {props.selectedGame &&
             <>
-                <button key="layoutModal" onClick={() => props.setModalLayoutEdit(true)}>
+                <div class="button config" key="layoutModal" onClick={() => props.setModalLayoutEdit(true)}>
                     Edit Layouts
-                </button>
+                </div>
                 <select key="layout" name="layout" id="layout" value={props.selectedLayout} onChange={(e) => {props.setSelectedLayout(e.target.value)}}
                 >
                     <option value="" disabled>Select a Layout...</option>

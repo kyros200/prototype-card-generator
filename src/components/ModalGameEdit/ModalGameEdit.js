@@ -53,16 +53,16 @@ const ModalGameEdit = (props) => {
             <>
                 <input onChange={(e) => setName(e.target.value)} value={name} />
                 {props.selectedGame !== name && 
-                <button onClick={() => saveNewName()}>Save Name</button>
+                <div  class="button confirm" onClick={() => saveNewName()}>Save Name</div>
                 }
             </>
             }
-            <button onClick={() => newGame()}>New Game</button>
+            <div class="button new" onClick={() => newGame()}>New Game</div>
             {props.selectedGame &&
                 (!confirmButton  ?
-                <button disabled={name !== props.selectedGame} onClick={() => setConfirmButton(true)}>Delete Selected Game</button>
+                <div class="button reject" disabled={name !== props.selectedGame} onClick={() => setConfirmButton(true)}>Delete Selected Game</div>
                 :
-                <button disabled={name !== props.selectedGame} onClick={() => deleteGame()}>Are you sure? Data will be deleted forever! (Click again to confirm)</button>
+                <div class="button reject" disabled={name !== props.selectedGame} onClick={() => deleteGame()}>Are you sure? Data will be deleted forever! (Click again to confirm)</div>
                 )
             }
         </Modal>

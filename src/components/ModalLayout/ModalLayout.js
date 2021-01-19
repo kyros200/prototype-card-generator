@@ -140,8 +140,8 @@ const ModalLayout = (props) => {
                     </div>
                     )}
                 )}
-                <button onClick={() => {addField()}}>Add Field</button>
-                <button onClick={() => {props.save(); props.close()}}>Save</button>
+                <div class="button new" onClick={() => {addField()}}>Add Field</div>
+                <div class="button confirm" onClick={() => {props.save(); props.close()}}>Save</div>
             </>
         )
     }
@@ -181,7 +181,7 @@ const ModalLayout = (props) => {
                         </div>
                     </div>
                 )}
-                <button onClick={() => {props.save(); props.close()}}>Save</button>
+                <div class="button confirm" onClick={() => {props.save(); props.close()}}>Save</div>
             </>
         )
     }
