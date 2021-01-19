@@ -6,13 +6,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
     return (
         <div 
             ref={ref} 
-            style={{
-                width: "8.8cm",
-                height: "6.35cm",
-                border: "0.1cm solid black",
-                boxSizing: "border-box",
-                position: "relative",
-            }}
+            style={props.allInfo[props.selectedGame][props.selectedLayout].card}
         >
             {Object.keys(props.cardForm).map(f => 
                 {

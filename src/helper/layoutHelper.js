@@ -2,6 +2,10 @@ const getField = (props, i) => {
     return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].fields.filter((x) => {return x.label === i}) : [];
 }
 
+const getCardStyle = (props, i) => {
+    return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].card : {};
+}
+
 const getType = (props, i) => {
     return getField(props, i).length > 0 ? getField(props, i)[0].type : "txt";
 }
@@ -26,6 +30,6 @@ const getFields = (props) => {
     return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].fields.map((l) => l.label) : [];
 }
 
-const layoutHelper = {getField, getType, getGames, getLayouts, formatInfo, getStyle, getFields};
+const layoutHelper = {getField, getCardStyle, getType, getGames, getLayouts, formatInfo, getStyle, getFields};
 
 export default layoutHelper;
