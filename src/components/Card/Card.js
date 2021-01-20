@@ -1,7 +1,7 @@
 import { exportComponentAsPNG } from 'react-component-export-image';
 import React, { useRef } from 'react';
 import layoutHelper from '../../helper/layoutHelper';
-import ButtonHatch from '../Hatch/ButtonHatch';
+import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 
 const ComponentToPrint = React.forwardRef((props, ref) => { 
     return (

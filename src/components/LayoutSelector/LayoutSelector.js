@@ -1,6 +1,6 @@
 import React from 'react';
 import layoutHelper from '../../helper/layoutHelper';
-import ButtonHatch from '../Hatch/ButtonHatch';
+import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 
 const LayoutSelector = (props) => {
     return (

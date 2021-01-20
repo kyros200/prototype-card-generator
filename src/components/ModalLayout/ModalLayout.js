@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import layoutHelper from '../../helper/layoutHelper';
 import defaultFieldCSS from '../../helper/defaultFieldCSS';
 import localStorageHelper from '../../helper/localStorageHelper';
-import ButtonHatch from '../Hatch/ButtonHatch';
+import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {

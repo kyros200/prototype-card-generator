@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import ButtonHatch from '../Hatch/ButtonHatch';
+import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 
 const ModalGameEdit = (props) => {
     const [name, setName] = useState("");

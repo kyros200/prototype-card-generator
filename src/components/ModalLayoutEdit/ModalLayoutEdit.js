@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import defaultCardCSS from '../../helper/defaultCardCSS';
-import ButtonHatch from '../Hatch/ButtonHatch';
+import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 
 const ModalLayoutEdit = (props) => {
     const [name, setName] = useState("");
