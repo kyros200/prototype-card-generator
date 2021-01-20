@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import layoutHelper from '../../helper/layoutHelper';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const LayoutSelector = (props) => {
-    useEffect(() => {
-        console.log(props);
-    }, [])
     return (
         <>
-            <div class="button config" key="gameModal" onClick={() => props.setModalGameEdit(true)}>
+            <ButtonHatch class="config mini" key="gameModal" onClick={() => props.setModalGameEdit(true)}>
                 Edit Games
-            </div>
+            </ButtonHatch>
             <select key="game" name="game" id="game" value={props.selectedGame} onChange={(e) => {props.setSelectedGame(e.target.value)}}>
                 <option value="">Select a Game...</option>
                 {layoutHelper.getGames(props).map((g) => (
@@ -19,9 +17,9 @@ const LayoutSelector = (props) => {
 
             {props.selectedGame &&
             <>
-                <div class="button config" key="layoutModal" onClick={() => props.setModalLayoutEdit(true)}>
+                <ButtonHatch class="button config mini" key="layoutModal" onClick={() => props.setModalLayoutEdit(true)}>
                     Edit Layouts
-                </div>
+                </ButtonHatch>
                 <select key="layout" name="layout" id="layout" value={props.selectedLayout} onChange={(e) => {props.setSelectedLayout(e.target.value)}}
                 >
                     <option value="" disabled>Select a Layout...</option>

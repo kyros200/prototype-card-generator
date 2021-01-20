@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const Form = (props) => {
     const handleChange = (value, field) => {
@@ -12,9 +13,9 @@ const Form = (props) => {
     return (
         <>
             {props.selectedLayout &&
-            <div class="button config" key="edit" onClick={() => props.setModalLayout(true)}>
+            <ButtonHatch class="config" key="edit" onClick={() => props.setModalLayout(true)}>
                 Edit this card layout
-            </div>
+            </ButtonHatch>
             }
 
             {

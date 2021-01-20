@@ -1,6 +1,7 @@
 import { exportComponentAsPNG } from 'react-component-export-image';
 import React, { useRef } from 'react';
 import layoutHelper from '../../helper/layoutHelper';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const ComponentToPrint = React.forwardRef((props, ref) => { 
     return (
@@ -42,9 +43,9 @@ const Card = (props) => {
     return (
         <>
             <ComponentToPrint {...props} ref={componentRef} />
-            <div class="button config" onClick={() => exportComponentAsPNG(componentRef)}>
+            <ButtonHatch class="config" onClick={() => exportComponentAsPNG(componentRef)}>
                 Export as PNG
-            </div>
+            </ButtonHatch>
         </>
     );
 };

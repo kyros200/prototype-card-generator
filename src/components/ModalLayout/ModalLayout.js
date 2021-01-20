@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import layoutHelper from '../../helper/layoutHelper';
 import defaultFieldCSS from '../../helper/defaultFieldCSS';
 import localStorageHelper from '../../helper/localStorageHelper';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
@@ -140,8 +141,8 @@ const ModalLayout = (props) => {
                     </div>
                     )}
                 )}
-                <div class="button new" onClick={() => {addField()}}>Add Field</div>
-                <div class="button confirm" onClick={() => {props.save(); props.close()}}>Save</div>
+                <ButtonHatch class="new" onClick={() => {addField()}}>Add Field</ButtonHatch>
+                <ButtonHatch class="confirm" onClick={() => {props.save(); props.close()}}>Save</ButtonHatch>
             </>
         )
     }
@@ -181,7 +182,7 @@ const ModalLayout = (props) => {
                         </div>
                     </div>
                 )}
-                <div class="button confirm" onClick={() => {props.save(); props.close()}}>Save</div>
+                <ButtonHatch class="confirm" onClick={() => {props.save(); props.close()}}>Save</ButtonHatch>
             </>
         )
     }

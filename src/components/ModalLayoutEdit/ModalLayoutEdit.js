@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import defaultCardCSS from '../../helper/defaultCardCSS';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const ModalLayoutEdit = (props) => {
     const [name, setName] = useState("");
@@ -53,16 +54,16 @@ const ModalLayoutEdit = (props) => {
             <>
                 <input onChange={(e) => setName(e.target.value)} value={name} />
                 {props.selectedLayout !== name && 
-                <div class="button confirm" onClick={() => saveNewName()}>Save Name</div>
+                <ButtonHatch class="confirm" onClick={() => saveNewName()}>Save Name</ButtonHatch>
                 }
             </>
             }
-            <div class="button new" onClick={() => newLayout()}>New Layout</div>
+            <ButtonHatch class="new" onClick={() => newLayout()}>New Layout</ButtonHatch>
             {props.selectedLayout &&
                 (!confirmButton  ?
-                <div class="button reject" disabled={name !== props.selectedLayout} onClick={() => setConfirmButton(true)}>Delete Selected Layout</div>
+                <ButtonHatch class="reject" disabled={name !== props.selectedLayout} onClick={() => setConfirmButton(true)}>Delete Selected Layout</ButtonHatch>
                 :
-                <div class="button reject" disabled={name !== props.selectedLayout} onClick={() => deleteLayout()}>Are you sure? Data will be deleted forever! (Click again to confirm)</div>
+                <ButtonHatch class="reject" disabled={name !== props.selectedLayout} onClick={() => deleteLayout()}>Are you sure? Data will be deleted forever! (Click again to confirm)</ButtonHatch>
                 )
             }
         </Modal>

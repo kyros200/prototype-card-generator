@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import ButtonHatch from '../Hatch/ButtonHatch';
 
 const ModalGameEdit = (props) => {
     const [name, setName] = useState("");
@@ -57,12 +58,12 @@ const ModalGameEdit = (props) => {
                 }
             </>
             }
-            <div class="button new" onClick={() => newGame()}>New Game</div>
+            <ButtonHatch class="new" onClick={() => newGame()}>New Game</ButtonHatch>
             {props.selectedGame &&
                 (!confirmButton  ?
-                <div class="button reject" disabled={name !== props.selectedGame} onClick={() => setConfirmButton(true)}>Delete Selected Game</div>
+                <ButtonHatch class="reject" disabled={name !== props.selectedGame} onClick={() => setConfirmButton(true)}>Delete Selected Game</ButtonHatch>
                 :
-                <div class="button reject" disabled={name !== props.selectedGame} onClick={() => deleteGame()}>Are you sure? Data will be deleted forever! (Click again to confirm)</div>
+                <ButtonHatch class="reject" disabled={name !== props.selectedGame} onClick={() => deleteGame()}>Are you sure? Data will be deleted forever! (Click again to confirm)</ButtonHatch>
                 )
             }
         </Modal>
