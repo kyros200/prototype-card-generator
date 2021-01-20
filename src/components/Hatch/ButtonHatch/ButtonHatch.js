@@ -3,7 +3,7 @@ import './ButtonHatch.css'
 
 const ButtonHatch = (props) => {
     return (
-        <div class={`button ${props.class}`} key={props.key} onClick={props.onClick}>
+        <div class={`button ${props.class}`} style={props.style} key={props.key} onClick={props.onClick}>
             {props.children}
         </div>
     );

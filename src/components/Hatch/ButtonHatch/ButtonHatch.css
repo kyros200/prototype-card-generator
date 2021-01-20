@@ -27,13 +27,13 @@
 }
 
 .button.confirm {
-    background-color: #9FD39C;
+    background-color: #2B912D;
 }
 
 .button.confirm:hover {
     background-color: white;
-    color: #9FD39C;
-    border: 2px solid #9FD39C;
+    color: #2B912D;
+    border: 2px solid #2B912D;
     transition: 0.2s;
 }
 

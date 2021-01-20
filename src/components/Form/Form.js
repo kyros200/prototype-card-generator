@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
+import InputHatch from '../Hatch/InputHatch/InputHatch';
 
 const Form = (props) => {
     const handleChange = (value, field) => {
@@ -26,7 +27,7 @@ const Form = (props) => {
                 return(
                     <div key={`field-${i.label}`}>
                         <label>{`${i.label}`}</label>
-                        <input onChange={(e) => handleChange(e.target.value, i.label)} value={props.cardForm[i.label]} />
+                        <InputHatch onChange={(e) => handleChange(e.target.value, i.label)} value={props.cardForm[i.label]} />
                     </div>
                 )
             })

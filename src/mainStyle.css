@@ -2,3 +2,8 @@
     font-family: 'Kufam', cursive;
     font-weight: 500;
 }
+
+*::selection {
+    color:#2B6535;
+    background: #0AC9B0;
+}

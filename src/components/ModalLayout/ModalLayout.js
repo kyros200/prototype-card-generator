@@ -4,6 +4,7 @@ import layoutHelper from '../../helper/layoutHelper';
 import defaultFieldCSS from '../../helper/defaultFieldCSS';
 import localStorageHelper from '../../helper/localStorageHelper';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
+import SelectHatch from '../Hatch/SelectHatch/SelectHatch';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
@@ -103,10 +104,19 @@ const ModalLayout = (props) => {
                         <div style={{width: "8%"}}>
                             <input onChange={(e) => handleChangeBase(e, f, "label")} value={layoutHelper.getField(props, f)[0].label} />
                         </div>
-                        <select style={{width: "8%"}} key="type" name="type" id="type" value={layoutHelper.getField(props, f)[0].type} onChange={(e) => handleChangeBase(e, f, "type")}>
-                            <option value="txt">Text</option>
-                            <option value="img">Image</option>
-                        </select>
+                        <SelectHatch 
+                            style={{width: "8%"}} 
+                            key="type" 
+                            name="type" 
+                            id="type" 
+                            value={layoutHelper.getField(props, f)[0].type} 
+                            onChange={(e) => handleChangeBase(e, f, "type")}
+                            emptyText=""
+                            options={[{value: "txt", text: "Text"}, {value: "img", text: "Image"}]}
+                        >
+                            {/* <option value="txt">Text</option>
+                            <option value="img">Image</option> */}
+                        </SelectHatch>
                         <div style={{width: "8%"}}>
                             <input onChange={(e) => handleChangeStyle(e, "width", f)} value={layoutHelper.getField(props, f)[0].styleField.width} />
                         </div>
@@ -128,16 +138,36 @@ const ModalLayout = (props) => {
                         <div style={{width: "8%"}}>
                             <input disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
                         </div>
-                        <select disabled={layoutHelper.getType(props, f) !== "txt"} style={{width: "8%"}} key="justifyContent" name="justifyContent" id="justifyContent" value={layoutHelper.getField(props, f)[0].styleField.justifyContent} onChange={(e) => handleChangeStyle(e, "justifyContent", f)}>
+                        <SelectHatch 
+                            disabled={layoutHelper.getType(props, f) !== "txt"} 
+                            style={{width: "8%"}} 
+                            key="justifyContent" 
+                            name="justifyContent" 
+                            id="justifyContent" 
+                            value={layoutHelper.getField(props, f)[0].styleField.justifyContent} 
+                            onChange={(e) => handleChangeStyle(e, "justifyContent", f)}
+                            emptyText=""
+                            options={[{text: "Left", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Right", value:"flex-end"}]}
+                        >
                             <option value="flex-start">Left</option>
                             <option value="center">Center</option>
                             <option value="flex-end">Right</option>
-                        </select>
-                        <select disabled={layoutHelper.getType(props, f) !== "txt"} style={{width: "8%"}} key="alignItems" name="alignItems" id="alignItems" value={layoutHelper.getField(props, f)[0].styleField.alignItems} onChange={(e) => handleChangeStyle(e, "alignItems", f)}>
+                        </SelectHatch>
+                        <SelectHatch 
+                            disabled={layoutHelper.getType(props, f) !== "txt"} 
+                            style={{width: "8%"}} 
+                            key="alignItems" 
+                            name="alignItems" 
+                            id="alignItems" 
+                            value={layoutHelper.getField(props, f)[0].styleField.alignItems}
+                            onChange={(e) => handleChangeStyle(e, "alignItems", f)}
+                            emptyText=""
+                            options={[{text: "Top", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Bottom", value:"flex-end"}]}
+                        >
                             <option value="flex-start">Top</option>
                             <option value="center">Center</option>
                             <option value="flex-end">Bottom</option>
-                        </select>
+                        </SelectHatch>
                     </div>
                     )}
                 )}
