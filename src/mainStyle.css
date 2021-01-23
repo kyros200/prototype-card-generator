@@ -1,3 +1,10 @@
+html, body, .viewport {
+    width: 100%;
+    min-height: 100% !important;
+    height: 100%;
+    margin: 0;
+  }
+
 * {
     font-family: 'Kufam', cursive;
     font-weight: 500;
@@ -11,6 +18,7 @@
 .home {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .navbar {
@@ -18,7 +26,6 @@
     margin-top  : 0px;
     padding: 20px 20px;
 
-    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -38,15 +45,16 @@
 }
 
 .project {
-    margin-top: 90px;
     display: flex;
+    height: 100%;
 }
 
-.left-side {
+.project .left-side {
     width: 70%;
 }
 
-.right-side {
+.project .right-side {
+    width: 30%;
     justify-content: center;
     align-items: center;
 }

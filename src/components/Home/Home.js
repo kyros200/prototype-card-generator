@@ -48,7 +48,7 @@ const Home = () => {
 
     return (
         <div class="home">
-            <div class="navbar fixed-top">
+            <div class="navbar">
                 <div class="title">
                     prototype-card-generator
                 </div>
