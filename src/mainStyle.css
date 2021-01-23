@@ -7,3 +7,46 @@
     color:#2B6535;
     background: #0AC9B0;
 }
+
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #2B6535;
+    margin-top  : 0px;
+    padding: 20px 20px;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar .title {
+    width: fit-content;
+    background-color: gray;
+
+    padding: 4px 8px;
+    border: 2px solid black;
+    border-radius: 8px;
+
+    font-family: 'Fira Code';
+    font-size: 24px;
+}
+
+.project {
+    margin-top: 90px;
+    display: flex;
+}
+
+.left-side {
+    width: 70%;
+}
+
+.right-side {
+    justify-content: center;
+    align-items: center;
+}

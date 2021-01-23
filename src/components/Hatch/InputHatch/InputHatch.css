@@ -1,7 +1,10 @@
 .input {
     padding: 8px;
+    padding-left: 12px;
+    border-radius: 24px;
 }
 
 .input:focus {
     background-color: #eeeeee;
+    outline: none;
 }

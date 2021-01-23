@@ -5,6 +5,7 @@ import defaultFieldCSS from '../../helper/defaultFieldCSS';
 import localStorageHelper from '../../helper/localStorageHelper';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 import SelectHatch from '../Hatch/SelectHatch/SelectHatch';
+import InputHatch from '../Hatch/InputHatch/InputHatch';
 
 const ModalLayout = (props) => {
     const handleChangeStyle = (e, styleField, field) => {
@@ -102,7 +103,7 @@ const ModalLayout = (props) => {
                             X
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeBase(e, f, "label")} value={layoutHelper.getField(props, f)[0].label} />
+                            <InputHatch onChange={(e) => handleChangeBase(e, f, "label")} value={layoutHelper.getField(props, f)[0].label} />
                         </div>
                         <SelectHatch 
                             style={{width: "8%"}} 
@@ -118,25 +119,25 @@ const ModalLayout = (props) => {
                             <option value="img">Image</option> */}
                         </SelectHatch>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeStyle(e, "width", f)} value={layoutHelper.getField(props, f)[0].styleField.width} />
+                            <InputHatch onChange={(e) => handleChangeStyle(e, "width", f)} value={layoutHelper.getField(props, f)[0].styleField.width} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeStyle(e, "height", f)} value={layoutHelper.getField(props, f)[0].styleField.height} />
+                            <InputHatch onChange={(e) => handleChangeStyle(e, "height", f)} value={layoutHelper.getField(props, f)[0].styleField.height} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeStyle(e, "top", f)} value={layoutHelper.getField(props, f)[0].styleField.top} />
+                            <InputHatch onChange={(e) => handleChangeStyle(e, "top", f)} value={layoutHelper.getField(props, f)[0].styleField.top} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeStyle(e, "left", f)} value={layoutHelper.getField(props, f)[0].styleField.left} />
+                            <InputHatch onChange={(e) => handleChangeStyle(e, "left", f)} value={layoutHelper.getField(props, f)[0].styleField.left} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeStyle(e, "border", f)} value={layoutHelper.getField(props, f)[0].styleField.border} />
+                            <InputHatch onChange={(e) => handleChangeStyle(e, "border", f)} value={layoutHelper.getField(props, f)[0].styleField.border} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "color", f)} value={layoutHelper.getField(props, f)[0].styleField.color} />
+                            <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "color", f)} value={layoutHelper.getField(props, f)[0].styleField.color} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
+                            <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
                         </div>
                         <SelectHatch 
                             disabled={layoutHelper.getType(props, f) !== "txt"} 
@@ -199,16 +200,16 @@ const ModalLayout = (props) => {
                 (
                     <div style={{display: 'flex', margin: "8px 0px"}}>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeCard(e, "width")} value={layoutHelper.getCardStyle(props).width} />
+                            <InputHatch onChange={(e) => handleChangeCard(e, "width")} value={layoutHelper.getCardStyle(props).width} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeCard(e, "height")} value={layoutHelper.getCardStyle(props).height} />
+                            <InputHatch onChange={(e) => handleChangeCard(e, "height")} value={layoutHelper.getCardStyle(props).height} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeCard(e, "border")} value={layoutHelper.getCardStyle(props).border} />
+                            <InputHatch onChange={(e) => handleChangeCard(e, "border")} value={layoutHelper.getCardStyle(props).border} />
                         </div>
                         <div style={{width: "8%"}}>
-                            <input onChange={(e) => handleChangeCard(e, "backgroundColor")} value={layoutHelper.getCardStyle(props).backgroundColor} />
+                            <InputHatch onChange={(e) => handleChangeCard(e, "backgroundColor")} value={layoutHelper.getCardStyle(props).backgroundColor} />
                         </div>
                     </div>
                 )}

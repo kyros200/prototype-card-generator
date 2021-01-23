@@ -47,84 +47,95 @@ const Home = () => {
     // }, [])
 
     return (
-        <>
-            <LayoutSelector
-                allInfo={allInfo}
+        <div class="home">
+            <div class="navbar fixed-top">
+                <div class="title">
+                    prototype-card-generator
+                </div>
+            </div>
+            <div class="project">
+                <div class="left-side">
+                    <LayoutSelector
+                        allInfo={allInfo}
+                        
+                        selectedGame={selectedGame}
+                        setSelectedGame={(v) => setSelectedGame(v)}
+                        
+                        selectedLayout={selectedLayout}
+                        setSelectedLayout={(v) => setSelectedLayout(v)}
+
+                        setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                        setModalGameEdit = {(b) => setModalGameEdit(b)}
+                    />
+                    <Form 
+                        allInfo={allInfo}
+                        // setAllInfo={(v) => setAllInfo(v)}
+
+                        cardForm={cardForm}
+                        setCardForm={(v) => setCardForm(v)}
+
+                        selectedGame={selectedGame}
+                        setSelectedGame={(v) => setSelectedGame(v)}
+                        
+                        selectedLayout={selectedLayout}
+                        setSelectedLayout={(v) => setSelectedLayout(v)}
+
+                        setModalLayout = {(b) => setModalLayout(b)}
+                        setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                        setModalGameEdit = {(b) => setModalGameEdit(b)}
+                    />
+                </div>
+                <div class="right-side">
+                    {selectedLayout &&
+                    <Card
+                        allInfo={allInfo}
+                        cardForm={cardForm}
+                        selectedGame={selectedGame}
+                        selectedLayout={selectedLayout}
+                    />
+                    }
+                </div>
                 
-                selectedGame={selectedGame}
-                setSelectedGame={(v) => setSelectedGame(v)}
-                
-                selectedLayout={selectedLayout}
-                setSelectedLayout={(v) => setSelectedLayout(v)}
+                <ModalLayout
+                    allInfo={allInfo}
+                    setAllInfo={(v) => setAllInfo(v)}
 
-                setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
-                setModalGameEdit = {(b) => setModalGameEdit(b)}
-            />
-            <Form 
-                allInfo={allInfo}
-                // setAllInfo={(v) => setAllInfo(v)}
+                    selectedGame={selectedGame}
+                    selectedLayout={selectedLayout}
 
-                cardForm={cardForm}
-                setCardForm={(v) => setCardForm(v)}
+                    cardForm={cardForm}
+                    setCardForm={(i) => setCardForm(i)}
 
-                selectedGame={selectedGame}
-                setSelectedGame={(v) => setSelectedGame(v)}
-                
-                selectedLayout={selectedLayout}
-                setSelectedLayout={(v) => setSelectedLayout(v)}
+                    isOpen={modalLayout}
+                    close = {() => setModalLayout(false)}
+                    save = {() => localStorageHelper.saveAllInfo(allInfo)}
+                />
+                <ModalLayoutEdit 
+                    isOpen={modalLayoutEdit}
+                    close = {() => setModalLayoutEdit(false)}
 
-                setModalLayout = {(b) => setModalLayout(b)}
-                setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
-                setModalGameEdit = {(b) => setModalGameEdit(b)}
-            />
-            {selectedLayout &&
-            <Card
-                allInfo={allInfo}
-                cardForm={cardForm}
-                selectedGame={selectedGame}
-                selectedLayout={selectedLayout}
-            />
-            }
-            <ModalLayout
-                allInfo={allInfo}
-                setAllInfo={(v) => setAllInfo(v)}
+                    selectedLayout={selectedLayout}
+                    setSelectedLayout={(v) => setSelectedLayout(v)}
+                    selectedGame={selectedGame}
 
-                selectedGame={selectedGame}
-                selectedLayout={selectedLayout}
+                    allInfo={allInfo}
+                    setAllInfo={(v) => setAllInfo(v)}
+                    save = {(a) => localStorageHelper.saveAllInfo(a)}
+                />
+                <ModalGameEdit 
+                    isOpen={modalGameEdit}
+                    close = {() => setModalGameEdit(false)}
 
-                cardForm={cardForm}
-                setCardForm={(i) => setCardForm(i)}
+                    selectedGame={selectedGame}
+                    setSelectedGame={(v) => setSelectedGame(v)}
+                    setSelectedLayout={(v) => setSelectedLayout(v)}
 
-                isOpen={modalLayout}
-                close = {() => setModalLayout(false)}
-                save = {() => localStorageHelper.saveAllInfo(allInfo)}
-            />
-            <ModalLayoutEdit 
-                isOpen={modalLayoutEdit}
-                close = {() => setModalLayoutEdit(false)}
-
-                selectedLayout={selectedLayout}
-                setSelectedLayout={(v) => setSelectedLayout(v)}
-                selectedGame={selectedGame}
-
-                allInfo={allInfo}
-                setAllInfo={(v) => setAllInfo(v)}
-                save = {(a) => localStorageHelper.saveAllInfo(a)}
-            />
-            <ModalGameEdit 
-                isOpen={modalGameEdit}
-                close = {() => setModalGameEdit(false)}
-
-                selectedGame={selectedGame}
-                setSelectedGame={(v) => setSelectedGame(v)}
-                setSelectedLayout={(v) => setSelectedLayout(v)}
-
-                allInfo={allInfo}
-                setAllInfo={(v) => setAllInfo(v)}
-                save = {(a) => localStorageHelper.saveAllInfo(a)}
-            />
-            
-        </>
+                    allInfo={allInfo}
+                    setAllInfo={(v) => setAllInfo(v)}
+                    save = {(a) => localStorageHelper.saveAllInfo(a)}
+                />
+            </div>            
+        </div>
     );
 };
 

@@ -41,12 +41,12 @@ const Card = (props) => {
     const componentRef = useRef();
 
     return (
-        <>
+        <div>
             <ComponentToPrint {...props} ref={componentRef} />
             <ButtonHatch class="config" onClick={() => exportComponentAsPNG(componentRef)}>
                 Export as PNG
             </ButtonHatch>
-        </>
+        </div>
     );
 };
 
