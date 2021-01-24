@@ -8,6 +8,8 @@ import ModalLayout from '../ModalLayout/ModalLayout';
 import ModalLayoutEdit from '../ModalLayoutEdit/ModalLayoutEdit';
 import ModalGameEdit from '../ModalGameEdit/ModalGameEdit';
 import layoutHelper from '../../helper/layoutHelper';
+import happy from '../../images/happy.png';
+import github from '../../images/githubIcon.png';
 
 const Home = () => {
     const [allInfo, setAllInfo] = useState(localStorage.getItem("card-maker-najjar") ? JSON.parse(localStorage.getItem("card-maker-najjar")) : "");
@@ -49,8 +51,16 @@ const Home = () => {
     return (
         <div class="home">
             <div class="navbar">
+                <div class="logo">
+                    <img alt="HATCH" src={happy} width="50px" height="50px" />
+                </div>
                 <div class="title">
                     prototype-card-generator
+                </div>
+                <div class="github">
+                    <a href="https://github.com/kyros200/prototype-card-generator" target="_blank">
+                        <img alt="Github" title="Go to Repo!" src={github} width="50px" height="50px" />
+                    </a>
                 </div>
             </div>
             <div class="project">

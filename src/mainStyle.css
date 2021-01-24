@@ -30,11 +30,21 @@ html, body, .viewport {
     right: 0;
     left: 0;
     z-index: 1030;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .navbar .title {
     width: fit-content;
-    background-color: gray;
+    background-color: #0AC9B0;
 
     padding: 4px 8px;
     border: 2px solid black;
@@ -42,6 +52,12 @@ html, body, .viewport {
 
     font-family: 'Fira Code';
     font-size: 24px;
+}
+
+.navbar .github {
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .project {
