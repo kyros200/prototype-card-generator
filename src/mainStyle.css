@@ -29,7 +29,6 @@ html, body, .viewport {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
 
     display: flex;
     align-items: center;
@@ -69,8 +68,31 @@ html, body, .viewport {
     width: 70%;
 }
 
+.project .left-side .top-side {
+    background-color: #9FD39C;
+    border: 2px solid black;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 20px;
+}
+
+.project .left-side .bottom-side {
+    background-color: #9FD39C;
+    border: 2px solid black;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 20px;
+}
+
 .project .right-side {
+    background-color: #9FD39C;
+    border: 2px solid black;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 20px;
+
     width: 30%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }

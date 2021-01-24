@@ -65,36 +65,42 @@ const Home = () => {
             </div>
             <div class="project">
                 <div class="left-side">
-                    <LayoutSelector
-                        allInfo={allInfo}
-                        
-                        selectedGame={selectedGame}
-                        setSelectedGame={(v) => setSelectedGame(v)}
-                        
-                        selectedLayout={selectedLayout}
-                        setSelectedLayout={(v) => setSelectedLayout(v)}
+                    <div class="top-side">
+                        <LayoutSelector
+                            allInfo={allInfo}
+                            
+                            selectedGame={selectedGame}
+                            setSelectedGame={(v) => setSelectedGame(v)}
+                            
+                            selectedLayout={selectedLayout}
+                            setSelectedLayout={(v) => setSelectedLayout(v)}
 
-                        setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
-                        setModalGameEdit = {(b) => setModalGameEdit(b)}
-                    />
-                    <Form 
-                        allInfo={allInfo}
-                        // setAllInfo={(v) => setAllInfo(v)}
+                            setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                            setModalGameEdit = {(b) => setModalGameEdit(b)}
+                        />
+                    </div>
+                    {selectedLayout && 
+                    <div class="bottom-side">
+                        <Form 
+                            allInfo={allInfo}
 
-                        cardForm={cardForm}
-                        setCardForm={(v) => setCardForm(v)}
+                            cardForm={cardForm}
+                            setCardForm={(v) => setCardForm(v)}
 
-                        selectedGame={selectedGame}
-                        setSelectedGame={(v) => setSelectedGame(v)}
-                        
-                        selectedLayout={selectedLayout}
-                        setSelectedLayout={(v) => setSelectedLayout(v)}
+                            selectedGame={selectedGame}
+                            setSelectedGame={(v) => setSelectedGame(v)}
+                            
+                            selectedLayout={selectedLayout}
+                            setSelectedLayout={(v) => setSelectedLayout(v)}
 
-                        setModalLayout = {(b) => setModalLayout(b)}
-                        setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
-                        setModalGameEdit = {(b) => setModalGameEdit(b)}
-                    />
+                            setModalLayout = {(b) => setModalLayout(b)}
+                            setModalLayoutEdit = {(b) => setModalLayoutEdit(b)}
+                            setModalGameEdit = {(b) => setModalGameEdit(b)}
+                        />
+                    </div>
+                    }
                 </div>
+                {selectedLayout && 
                 <div class="right-side">
                     {selectedLayout &&
                     <Card
@@ -105,6 +111,7 @@ const Home = () => {
                     />
                     }
                 </div>
+                }
                 
                 <ModalLayout
                     allInfo={allInfo}
