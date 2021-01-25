@@ -8,7 +8,7 @@ import ModalLayout from '../ModalLayout/ModalLayout';
 import ModalLayoutEdit from '../ModalLayoutEdit/ModalLayoutEdit';
 import ModalGameEdit from '../ModalGameEdit/ModalGameEdit';
 import layoutHelper from '../../helper/layoutHelper';
-import happy from '../../images/happy.png';
+import hatchLogo from '../../images/hatch-transparent.png';
 import github from '../../images/githubIcon.png';
 
 const Home = () => {
@@ -52,7 +52,7 @@ const Home = () => {
         <div class="home">
             <div class="navbar">
                 <div class="logo">
-                    <img alt="HATCH" src={happy} width="50px" height="50px" />
+                    <img alt="HATCH" src={hatchLogo} width="50px" height="50px" />
                 </div>
                 <div class="title">
                     prototype-card-generator
