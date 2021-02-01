@@ -1,18 +1,24 @@
 .button {
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 24px;
     padding: 8px 12px;
     text-align: center;
     border: 2px solid black;
     width: fit-content;
     height: fit-content;
     transition: 0.2s;
-    color:white
+    color:white;
+    margin: 4px;
+    box-sizing: border-box;
 }
 
 .button.mini {
     font-size: small;
-    padding: 2px 6px;
+    padding: 4px 8px;
+}
+
+.button.max-width {
+    width: 100%;
 }
 
 .button.config {
