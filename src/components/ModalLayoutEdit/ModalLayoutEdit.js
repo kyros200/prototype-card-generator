@@ -2,10 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import defaultCardCSS from '../../helper/defaultCardCSS';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
+import InputHatch from '../Hatch/InputHatch/InputHatch';
+import CloseIcon from '../../images/closeIcon.png';
 
 const ModalLayoutEdit = (props) => {
     const [name, setName] = useState("");
     const [confirmButton, setConfirmButton] = useState(false);
+
+    const customStyles = {
+        content : {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
 
     useEffect(() => {
         setName(props.selectedLayout);
@@ -47,16 +60,21 @@ const ModalLayoutEdit = (props) => {
         <Modal
             isOpen={props.isOpen}
             ariaHideApp={false}
+            style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            onRequestClose={() => props.close()}
         >
-            <button onClick={() => props.close()}>Close</button>
-            <h2>Layout Info</h2>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                Layout Info
+                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
+            </div>
             {props.selectedLayout &&
-            <>
-                <input onChange={(e) => setName(e.target.value)} value={name} />
+            <div>
+                <InputHatch onChange={(e) => setName(e.target.value)} value={name} />
                 {props.selectedLayout !== name && 
                 <ButtonHatch class="confirm" onClick={() => saveNewName()}>Save Name</ButtonHatch>
                 }
-            </>
+            </div>
             }
             <ButtonHatch class="new" onClick={() => newLayout()}>New Layout</ButtonHatch>
             {props.selectedLayout &&

@@ -6,8 +6,20 @@ import localStorageHelper from '../../helper/localStorageHelper';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 import SelectHatch from '../Hatch/SelectHatch/SelectHatch';
 import InputHatch from '../Hatch/InputHatch/InputHatch';
+import CloseIcon from '../../images/closeIcon.png';
 
 const ModalLayout = (props) => {
+    const customStyles = {
+        content : {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
+
     const handleChangeStyle = (e, styleField, field) => {
         let newAllInfo = JSON.parse(JSON.stringify(props.allInfo));
         let index = newAllInfo[props.selectedGame][props.selectedLayout].fields.map((f) => f.label).indexOf(field);

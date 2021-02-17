@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
+import InputHatch from '../Hatch/InputHatch/InputHatch';
+import CloseIcon from '../../images/closeIcon.png';
 
 const ModalGameEdit = (props) => {
     const [name, setName] = useState("");
     const [confirmButton, setConfirmButton] = useState(false);
+
+    const customStyles = {
+        content : {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
 
     useEffect(() => {
         setName(props.selectedGame);
@@ -47,16 +60,21 @@ const ModalGameEdit = (props) => {
         <Modal
             isOpen={props.isOpen}
             ariaHideApp={false}
+            style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            onRequestClose={() => props.close()}
         >
-            <button onClick={() => props.close()}>Close</button>
-            <h2>Game Info</h2>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                Game Info
+                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
+            </div>
             {props.selectedGame &&
-            <>
-                <input onChange={(e) => setName(e.target.value)} value={name} />
+            <div>
+                <InputHatch onChange={(e) => setName(e.target.value)} value={name} />
                 {props.selectedGame !== name && 
                 <div  class="button confirm" onClick={() => saveNewName()}>Save Name</div>
                 }
-            </>
+            </div>
             }
             <ButtonHatch class="new" onClick={() => newGame()}>New Game</ButtonHatch>
             {props.selectedGame &&
