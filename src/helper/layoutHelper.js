@@ -2,7 +2,7 @@ const getField = (props, i) => {
     return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].fields.filter((x) => {return x.label === i}) : [];
 }
 
-const getCardStyle = (props, i) => {
+const getCardStyle = (props) => {
     return (props.selectedGame && props.selectedLayout) ? props.allInfo[props.selectedGame][props.selectedLayout].card : {};
 }
 

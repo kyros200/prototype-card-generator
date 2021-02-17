@@ -6,7 +6,7 @@ import './LayoutSelector.css';
 
 const LayoutSelector = (props) => {
     const handleChageGame = (e) => {
-        if (e.target.value === "")
+        if (e.target.value !== props.selectedGame)
             props.setSelectedLayout("");
 
         props.setSelectedGame(e.target.value);
