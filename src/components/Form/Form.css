@@ -1,0 +1,30 @@
+.formContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.fieldsContainer {
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fieldContainer {
+    display: flex;
+    align-items: center;
+    width: 50%;
+
+    box-sizing: border-box;
+    margin-bottom: 8px;
+}
+
+.fieldContainer .field-label {
+    width: 20%;
+}
+
+.fieldContainer .field-input {
+    width: 70%;
+}

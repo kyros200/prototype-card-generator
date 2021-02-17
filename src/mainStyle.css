@@ -3,6 +3,7 @@ html, body, .viewport {
     min-height: 100% !important;
     height: 100%;
     margin: 0;
+    overflow-y: hidden;
   }
 
 * {
@@ -33,6 +34,8 @@ html, body, .viewport {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    height: 10%;
 }
 
 .navbar .logo {
@@ -61,11 +64,14 @@ html, body, .viewport {
 
 .project {
     display: flex;
-    height: 100%;
+    height: 90%;
 }
 
 .project .left-side {
     width: 70%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .project .left-side .top-side {
@@ -74,6 +80,7 @@ html, body, .viewport {
     margin: 16px;
     padding: 16px;
     border-radius: 20px;
+    height: 15%;
 }
 
 .project .left-side .bottom-side {
@@ -82,6 +89,7 @@ html, body, .viewport {
     margin: 16px;
     padding: 16px;
     border-radius: 20px;
+    height: 75%;
 }
 
 .project .right-side {
