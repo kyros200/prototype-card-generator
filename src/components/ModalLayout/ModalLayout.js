@@ -16,7 +16,11 @@ const ModalLayout = (props) => {
             right: 'auto',
             bottom: 'auto',
             marginRight: '-50%',
-            transform: 'translate(-50%, -50%)'
+            transform: 'translate(-50%, -50%)',
+            borderRadius: "16px",
+            overflowY: "scroll",
+            maxHeight: "90%",
+            maxWidth: "90%"
         }
     };
 
@@ -70,163 +74,135 @@ const ModalLayout = (props) => {
         return (
             <>
                 <h2>Fields</h2>
-                <div style={{display: 'flex', margin: "8px 0px"}}>
-                    <div style={{width: "3%"}} />
-                    <div style={{width: "8%"}}>
-                        Field Name
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Field Type
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Width
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Height
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Offset (Top)
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Offset (Left)
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Border
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Color Text
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Color Background
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Horizontal Align
-                    </div>
-                    <div style={{width: "8%"}}>
-                        Vertical Align
-                    </div>
-                </div>
-                {props.selectedGame && props.selectedLayout &&
-                layoutHelper.getFields(props).map((f) =>
-                    {
-                    return (
-                    <div style={{display: 'flex', margin: "8px 0px"}}>
-                        <div style={{cursor: "pointer", width: "3%"}} onClick={() => removeField(f)}>
-                            X
+                <div>
+                    {props.selectedGame && props.selectedLayout &&
+                    layoutHelper.getFields(props).map((f) =>
+                        {
+                        return (
+                        <div style={{
+                            display: 'flex', 
+                            flexDirection:"column",
+                            border: "1px solid black", 
+                            borderRadius: "16px", 
+                            boxShadow: "3px 5px rgba(0,0,0,0.3)", 
+                            padding: "16px",
+                            marginBottom: "16px"
+                        }}>
+                            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                                <h3 style={{marginTop: "0px"}}>{layoutHelper.getField(props, f)[0].label}</h3>
+                                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => removeField(f)} src={CloseIcon} alt="Close"/>
+                            </div>
+                            <div style={{
+                            display: 'flex', 
+                            flexWrap: "wrap", 
+                            }}>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Field Name</label>
+                                    <InputHatch onChange={(e) => handleChangeBase(e, f, "label")} value={layoutHelper.getField(props, f)[0].label} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Field Type</label>
+                                    <SelectHatch 
+                                    key="type" 
+                                    name="type" 
+                                    id="type" 
+                                    value={layoutHelper.getField(props, f)[0].type} 
+                                    onChange={(e) => handleChangeBase(e, f, "type")}
+                                    emptyText=""
+                                    options={[{value: "txt", text: "Text"}, {value: "img", text: "Image"}]}
+                                    />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Width</label>
+                                    <InputHatch onChange={(e) => handleChangeStyle(e, "width", f)} value={layoutHelper.getField(props, f)[0].styleField.width} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Height</label>
+                                    <InputHatch onChange={(e) => handleChangeStyle(e, "height", f)} value={layoutHelper.getField(props, f)[0].styleField.height} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Offset (Top)</label>
+                                    <InputHatch onChange={(e) => handleChangeStyle(e, "top", f)} value={layoutHelper.getField(props, f)[0].styleField.top} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Offset (Left)</label>
+                                    <InputHatch onChange={(e) => handleChangeStyle(e, "left", f)} value={layoutHelper.getField(props, f)[0].styleField.left} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Border</label>
+                                    <InputHatch onChange={(e) => handleChangeStyle(e, "border", f)} value={layoutHelper.getField(props, f)[0].styleField.border} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Color Text</label>
+                                    <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "color", f)} value={layoutHelper.getField(props, f)[0].styleField.color} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Color Background</label>
+                                    <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Horizontal Align</label>
+                                    <SelectHatch 
+                                        disabled={layoutHelper.getType(props, f) !== "txt"}
+                                        key="justifyContent" 
+                                        name="justifyContent" 
+                                        id="justifyContent" 
+                                        value={layoutHelper.getField(props, f)[0].styleField.justifyContent} 
+                                        onChange={(e) => handleChangeStyle(e, "justifyContent", f)}
+                                        emptyText=""
+                                        options={[{text: "Left", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Right", value:"flex-end"}]}
+                                    />
+                                </div>
+                                <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                                    <label for="">Vertical Align</label>
+                                    <SelectHatch 
+                                        disabled={layoutHelper.getType(props, f) !== "txt"}
+                                        key="alignItems" 
+                                        name="alignItems" 
+                                        id="alignItems" 
+                                        value={layoutHelper.getField(props, f)[0].styleField.alignItems}
+                                        onChange={(e) => handleChangeStyle(e, "alignItems", f)}
+                                        emptyText=""
+                                        options={[{text: "Top", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Bottom", value:"flex-end"}]}
+                                    />
+                                </div>
+                            </div>
                         </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeBase(e, f, "label")} value={layoutHelper.getField(props, f)[0].label} />
-                        </div>
-                        <SelectHatch 
-                            style={{width: "8%"}} 
-                            key="type" 
-                            name="type" 
-                            id="type" 
-                            value={layoutHelper.getField(props, f)[0].type} 
-                            onChange={(e) => handleChangeBase(e, f, "type")}
-                            emptyText=""
-                            options={[{value: "txt", text: "Text"}, {value: "img", text: "Image"}]}
-                        >
-                            {/* <option value="txt">Text</option>
-                            <option value="img">Image</option> */}
-                        </SelectHatch>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeStyle(e, "width", f)} value={layoutHelper.getField(props, f)[0].styleField.width} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeStyle(e, "height", f)} value={layoutHelper.getField(props, f)[0].styleField.height} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeStyle(e, "top", f)} value={layoutHelper.getField(props, f)[0].styleField.top} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeStyle(e, "left", f)} value={layoutHelper.getField(props, f)[0].styleField.left} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeStyle(e, "border", f)} value={layoutHelper.getField(props, f)[0].styleField.border} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "color", f)} value={layoutHelper.getField(props, f)[0].styleField.color} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch disabled={layoutHelper.getType(props, f) !== "txt"} onChange={(e) => handleChangeStyle(e, "backgroundColor", f)} value={layoutHelper.getField(props, f)[0].styleField.backgroundColor} />
-                        </div>
-                        <SelectHatch 
-                            disabled={layoutHelper.getType(props, f) !== "txt"} 
-                            style={{width: "8%"}} 
-                            key="justifyContent" 
-                            name="justifyContent" 
-                            id="justifyContent" 
-                            value={layoutHelper.getField(props, f)[0].styleField.justifyContent} 
-                            onChange={(e) => handleChangeStyle(e, "justifyContent", f)}
-                            emptyText=""
-                            options={[{text: "Left", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Right", value:"flex-end"}]}
-                        >
-                            <option value="flex-start">Left</option>
-                            <option value="center">Center</option>
-                            <option value="flex-end">Right</option>
-                        </SelectHatch>
-                        <SelectHatch 
-                            disabled={layoutHelper.getType(props, f) !== "txt"} 
-                            style={{width: "8%"}} 
-                            key="alignItems" 
-                            name="alignItems" 
-                            id="alignItems" 
-                            value={layoutHelper.getField(props, f)[0].styleField.alignItems}
-                            onChange={(e) => handleChangeStyle(e, "alignItems", f)}
-                            emptyText=""
-                            options={[{text: "Top", value:"flex-start"}, {text: "Center", value:"center"}, {text: "Bottom", value:"flex-end"}]}
-                        >
-                            <option value="flex-start">Top</option>
-                            <option value="center">Center</option>
-                            <option value="flex-end">Bottom</option>
-                        </SelectHatch>
-                    </div>
+                        )}
                     )}
-                )}
-                <ButtonHatch class="new" onClick={() => {addField()}}>Add Field</ButtonHatch>
-                <ButtonHatch class="confirm" onClick={() => {props.save(); props.close()}}>Save</ButtonHatch>
+                </div>
             </>
         )
     }
 
     const CardForm = (props) => {
         return (
-            <>
-                <h2>Card</h2>
-                <div style={{display: 'flex', margin: "8px 0px"}}>
-                    <div style={{width: "8%"}}>
-                        Width
+            <div style={{
+                border:"1px solid black", 
+                borderRadius:"16px", 
+                boxShadow: "3px 5px rgba(0,0,0,0.3)",
+                padding: "16px"
+            }}>
+                <div style={{display: 'flex', flexWrap:"wrap"}}>
+                    <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                        <label for="">Width</label>
+                        <InputHatch onChange={(e) => handleChangeCard(e, "width")} value={layoutHelper.getCardStyle(props).width} />
                     </div>
-                    <div style={{width: "8%"}}>
-                        Height
+                    <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                        <label for="">Height</label>
+                        <InputHatch onChange={(e) => handleChangeCard(e, "height")} value={layoutHelper.getCardStyle(props).height} />
                     </div>
-                    <div style={{width: "8%"}}>
-                        Border
+                    <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                        <label for="">Border</label>
+                        <InputHatch onChange={(e) => handleChangeCard(e, "border")} value={layoutHelper.getCardStyle(props).border} />
                     </div>
-                    <div style={{width: "8%"}}>
-                        background Color
+                    <div style={{display: 'flex', flexDirection:"column", marginRight:"16px"}}>
+                        <label for="">Background Color</label>
+                        <InputHatch onChange={(e) => handleChangeCard(e, "backgroundColor")} value={layoutHelper.getCardStyle(props).backgroundColor} />
                     </div>
                 </div>
-                {props.selectedGame && props.selectedLayout &&
-                (
-                    <div style={{display: 'flex', margin: "8px 0px"}}>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeCard(e, "width")} value={layoutHelper.getCardStyle(props).width} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeCard(e, "height")} value={layoutHelper.getCardStyle(props).height} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeCard(e, "border")} value={layoutHelper.getCardStyle(props).border} />
-                        </div>
-                        <div style={{width: "8%"}}>
-                            <InputHatch onChange={(e) => handleChangeCard(e, "backgroundColor")} value={layoutHelper.getCardStyle(props).backgroundColor} />
-                        </div>
-                    </div>
-                )}
                 <ButtonHatch class="confirm" onClick={() => {props.save(); props.close()}}>Save</ButtonHatch>
-            </>
+            </div>
         )
     }
     
@@ -234,10 +210,20 @@ const ModalLayout = (props) => {
         <Modal
             isOpen={props.isOpen}
             ariaHideApp={false}
+            style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            onRequestClose={() => props.close()}
         >
-            <button onClick={() => {props.close(); props.setAllInfo(localStorageHelper.getJSON())}}>Close</button>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                <h2 style={{marginTop: "0px"}}>Card</h2>
+                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
+            </div>
             {CardForm(props)}
             {FieldsForm(props)}
+            <div style={{display:"flex"}}>
+                <ButtonHatch class="new" onClick={() => {addField()}}>Add Field</ButtonHatch>
+                <ButtonHatch class="confirm" onClick={() => {props.save(); props.close()}}>Save</ButtonHatch>
+            </div>
         </Modal>
     );
 };
