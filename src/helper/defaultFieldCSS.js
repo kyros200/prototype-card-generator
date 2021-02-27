@@ -7,8 +7,10 @@ const defaultFieldCSS = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    color:"black",
 
     overflow: "hidden",
+    overflowWrap: "anywhere"
 }
 
 export default defaultFieldCSS;
