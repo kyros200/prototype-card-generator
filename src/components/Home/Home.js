@@ -30,7 +30,7 @@ const Home = () => {
         if(selectedLayout) {
             setCardForm(layoutHelper.formatInfo(allInfo, selectedGame, selectedLayout));
         }
-    }, [selectedLayout])
+    }, [selectedLayout, allInfo, selectedGame])
 
     // useEffect(() => {
     //     console.log(cardForm);
@@ -58,7 +58,7 @@ const Home = () => {
                     prototype-card-generator
                 </div>
                 <div class="github">
-                    <a href="https://github.com/kyros200/prototype-card-generator" target="_blank">
+                    <a href="https://github.com/kyros200/prototype-card-generator" target="_blank" rel="noreferrer">
                         <img alt="Github" title="Go to Repo!" src={github} width="50px" height="50px" />
                     </a>
                 </div>

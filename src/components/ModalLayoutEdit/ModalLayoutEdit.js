@@ -67,7 +67,7 @@ const ModalLayoutEdit = (props) => {
         >
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                 Layout Info
-                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
+                <img alt="" width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
             </div>
             {props.selectedLayout &&
             <div>

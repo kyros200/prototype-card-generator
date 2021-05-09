@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import layoutHelper from '../../helper/layoutHelper';
 import defaultFieldCSS from '../../helper/defaultFieldCSS';
-import localStorageHelper from '../../helper/localStorageHelper';
 import ButtonHatch from '../Hatch/ButtonHatch/ButtonHatch';
 import SelectHatch from '../Hatch/SelectHatch/SelectHatch';
 import InputHatch from '../Hatch/InputHatch/InputHatch';
@@ -216,7 +215,7 @@ const ModalLayout = (props) => {
         >
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                 <h2 style={{marginTop: "0px"}}>Card</h2>
-                <img width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
+                <img alt="" width="16px" height="16px" style={{cursor: "pointer"}} onClick={() => props.close()} src={CloseIcon} />
             </div>
             {CardForm(props)}
             {FieldsForm(props)}
